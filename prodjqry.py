@@ -8,7 +8,10 @@ import ast
 import redis
 import os, os.path
 
-conn = redis.Redis('localhost')
+
+redis_url = os.getenv('REDISTOGO_URL', 'redis://localhost:6379')
+conn = redis.from_url(redis_url)
+#conn = redis.Redis('localhost')
 condition = Condition()
 
 
